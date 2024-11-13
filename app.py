@@ -4,8 +4,8 @@ import pickle
 model= pickle.load(open("spam.pkl",'rb'))
 cv=pickle.load(open("vectorizer.pkl",'rb'))
 st.title("Spam check")
-st.write("THis is ml")
-user_input=st.text_area("mail desctiption",height=150)
+# st.write("THis is ml")
+user_input=st.text_area("mail desctiption",height=150,placeholder="Enter mail description")
 if st.button("classify"):
     
     if user_input:
@@ -13,11 +13,11 @@ if st.button("classify"):
         vect= cv.transform(data).toarray()
         pred= model.predict(vect)
         if pred[0]==0:
-            st.write("not spam")
-            st.success("not spam")
+            # st.write("not spam")
+            st.success("This mail is not spam")
         else:
 
-            st.write("spam")
+            # st.write("spam")
             st.error("this is spam email")
     else:
         print("try agin")
